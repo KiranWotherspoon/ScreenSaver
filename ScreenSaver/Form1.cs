@@ -49,6 +49,28 @@ namespace ScreenSaver
                 if (b.y > this.Height - b.size || b.y < 0) { b.ySpeed = -b.ySpeed; }
             }
 
+            if (balls[0].Collision(balls[1]))
+            {
+                balls[0].xSpeed = -balls[0].xSpeed;
+                balls[1].xSpeed = -balls[1].xSpeed;
+                balls[0].ySpeed = -balls[0].ySpeed;
+                balls[1].ySpeed = -balls[1].ySpeed;
+            }
+            if (balls[0].Collision(balls[2]))
+            {
+                balls[0].xSpeed = -balls[0].xSpeed;
+                balls[2].xSpeed = -balls[2].xSpeed;
+                balls[0].ySpeed = -balls[0].ySpeed;
+                balls[2].ySpeed = -balls[2].ySpeed;
+            }
+            if (balls[1].Collision(balls[2]))
+            { 
+                balls[1].xSpeed = -balls[1].xSpeed;
+                balls[2].xSpeed = -balls[2].xSpeed;
+                balls[1].ySpeed = -balls[1].ySpeed;
+                balls[2].ySpeed = -balls[2].ySpeed;
+            }
+
             Refresh();
         }
 
@@ -58,6 +80,11 @@ namespace ScreenSaver
             {
                 e.Graphics.FillEllipse(drawBrush, b.x, b.y, b.size, b.size);
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

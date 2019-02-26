@@ -26,15 +26,23 @@ namespace ScreenSaver
             y += ySpeed;
         }
 
-        public bool Collision(Ball b)
+        public bool Collision(Ball b, Ball b2)
         {
-            Rectangle rec1 = new Rectangle(b.x, b.y, b.size, b.size);
-            Rectangle rec2 = new Rectangle(x, y, size, size);
 
-            if (rec1.IntersectsWith(rec2))
-            {
-                return true;
-            }
+            Rectangle rec1 = new Rectangle(x, y, size, size);
+            Rectangle rec2 = new Rectangle(b.x, b.y, b.size, b.size);
+            Rectangle rec3 = new Rectangle(b2.x, b2.y, b2.size, b2.size);
+
+            if (rec1.IntersectsWith(rec2)) { return true; }
+            if (rec1.IntersectsWith(rec3)) { return true; }
+            return false;
+        }
+        public bool Collision (Ball b)
+        {
+            Rectangle rec1 = new Rectangle(x, y, size, size);
+            Rectangle rec2 = new Rectangle(b.x, b.y, b.size, b.size);
+
+            if (rec1.IntersectsWith(rec2)) { return true; }
             return false;
         }
     }
